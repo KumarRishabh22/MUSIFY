@@ -7,17 +7,16 @@ let song3 = new Audio("music/3.mp3");
 let song4 = new Audio("music/4.mp3");
 let songarr={"music/1.mp3","music/2.mp3","music/3.mp3","music/4.mp3"};
 
+let audio;
+
 function playsong(name){
-    let audio=new Audio("music/"+name+".mp3");
+   audio=new Audio("music/"+name+".mp3");
     audio.play();
+    return this.name;
 }
 
-function play(){
+let playstatus=this.playsong();
 
-    for(let i=0;i<=4;i++){
-    playsong(i);
-    }
-}
 
 
 // function one() {
@@ -55,7 +54,7 @@ function play(){
 // }
 
 // function playsong(plysong){
-    
+
 //     plysong.play();
 // }
 
@@ -64,17 +63,16 @@ function play(){
 
 
 
-let aud = new Audio ('music/1.mp3');
 
 function playpause(){
     // document.getElementById('masterplay').innerHTML = "hi";
-    if(aud.paused||aud.currentTime<=0){
-      playsong()
+    if(audio.paused||audio.currentTime<=0){
+      audio.play();
     document.getElementById('masterplay').classList.remove('fa-play-circle');
     document.getElementById('masterplay').classList.add('fa-pause-circle');
 }
     else {
-        aud.pause();
+        audio.pause();
     document.getElementById('masterplay').classList.remove('fa-pause-circle');
     document.getElementById('masterplay').classList.add('fa-play-circle');
     }
@@ -85,13 +83,12 @@ let count=0;
 function forwardPlay(){
 
 let musify={"1.mp3","2.mp3","3.mp3","4.mp3"};
-
-
-
-
-
-
+if(playstatus==4){
+  playsong(1);
+}else{
+playsong(playstatus+1);
 }
 
 
 
+}
